@@ -6,7 +6,7 @@ img = cv2.imread('../imgs/chessboard.jpeg')
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-corners = cv2.goodFeaturesToTrack(img_gray, 81, 0.5, 20)
+corners = cv2.goodFeaturesToTrack(img_gray, 81, 0.01, 10)
 
 corners = np.int0(corners)
 
