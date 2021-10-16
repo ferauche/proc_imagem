@@ -1,14 +1,15 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("../imgs/moedas_2.jpeg")
+img = cv2.imread("../imgs/moedas_1.jpeg")
+#img = cv2.blur(img, (5,5))
 #segmentacao por cor
 img_hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 
 for y in range(0, img_hsv.shape[0]):
    for x in range(0, img_hsv.shape[1]):
         (h, s, v) = img_hsv[y, x]
-        img_hsv[y,x] = (0,0,v)
+        img_hsv[y,x] = (0,s,v)
 
 img_grayscale = cv2.cvtColor(img_hsv,cv2.COLOR_BGR2GRAY)
 (T, img_bin) = cv2.threshold(img_grayscale,0,255,cv2.THRESH_OTSU)
